@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="badgeViewStyle" format="reference"/>
+
+    <declare-styleable name="BadgeView">
+        <attr name="backgroundColor" format="color"/>
+    </declare-styleable>
+</resources>

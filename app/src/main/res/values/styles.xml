@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="badgeViewStyle">@style/Widget.BadgeView</item>
+    </style>
+
+    <style name="Widget.BadgeView" parent="@android:style/Widget.TextView">
+        <item name="backgroundColor">#ffffbb33</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>
