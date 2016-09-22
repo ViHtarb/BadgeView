@@ -136,6 +136,10 @@ public class BadgeActionView extends FrameLayout {
         }
     }
 
+    public boolean isShowing() {
+        return mBadgeView.isShowing();
+    }
+
     public void toggle() {
         mBadgeView.toggle();
     }
@@ -181,6 +185,14 @@ public class BadgeActionView extends FrameLayout {
         mBadgeView.setBackgroundColor(color);
     }
 
+    public int getDuration() {
+        return mBadgeView.getDuration();
+    }
+
+    public void setDuration(int duration) {
+        mBadgeView.setDuration(duration);
+    }
+
     public CharSequence getText() {
         return mBadgeView.getText();
     }
@@ -191,10 +203,6 @@ public class BadgeActionView extends FrameLayout {
 
     public void setText(String text) {
         mBadgeView.setText(text);
-    }
-
-    public boolean isShowing() {
-        return mBadgeView.isShowing();
     }
 
     public BadgeView getBadgeView() {

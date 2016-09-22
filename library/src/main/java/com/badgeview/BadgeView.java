@@ -1,6 +1,5 @@
 package com.badgeview;
 
-import android.animation.Animator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -15,12 +14,12 @@ import android.widget.TextView;
 
 /**
  * Implementation of BadgeView
- * // TODO on empty text small background
  */
 public class BadgeView extends TextView {
     private boolean isShowing = true;
 
     private int mBackgroundColor;
+    private int mDuration;
 
     public BadgeView(Context context) {
         this(context, null);
@@ -38,6 +37,7 @@ public class BadgeView extends TextView {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BadgeView, defStyleAttr, 0);
 
         mBackgroundColor = a.getColor(R.styleable.BadgeView_backgroundColor, Color.RED);
+        mDuration = a.getInt(R.styleable.BadgeView_android_duration, 200);
 
         a.recycle();
 
@@ -129,8 +129,10 @@ public class BadgeView extends TextView {
 
         if (animate) {
             animate()
-                    .setDuration(200)
+                    .setDuration(mDuration)
                     .alpha(1)
+                    .scaleX(1)
+                    .scaleY(1)
                     .start();
         }
     }
@@ -144,29 +146,10 @@ public class BadgeView extends TextView {
 
         if (animate) {
             animate()
-                    .setDuration(200)
+                    .setDuration(mDuration)
                     .alpha(0)
-                    .setListener(new Animator.AnimatorListener() {
-                        @Override
-                        public void onAnimationStart(Animator animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            BadgeView.super.setVisibility(GONE);
-                        }
-
-                        @Override
-                        public void onAnimationCancel(Animator animation) {
-
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animator animation) {
-
-                        }
-                    })
+                    .scaleX(0)
+                    .scaleY(0)
                     .start();
         } else {
             super.setVisibility(GONE);
@@ -182,6 +165,14 @@ public class BadgeView extends TextView {
             mBackgroundColor = color;
             setBackgroundInternal(getBackgroundDrawable());
         }
+    }
+
+    public int getDuration() {
+        return mDuration;
+    }
+
+    public void setDuration(int duration) {
+        mDuration = duration;
     }
 
     protected final void setBackgroundInternal(Drawable background) {

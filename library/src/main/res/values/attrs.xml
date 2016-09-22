@@ -4,5 +4,6 @@
 
     <declare-styleable name="BadgeView">
         <attr name="backgroundColor" format="color"/>
+        <attr name="android:duration"/>
     </declare-styleable>
 </resources>
