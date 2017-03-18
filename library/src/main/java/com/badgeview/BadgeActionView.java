@@ -122,7 +122,7 @@ public class BadgeActionView extends FrameLayout {
                 menuItem.setActionView(this);
             }
 
-            if (actionView.equals(this)) {
+            if (actionView == this) {
                 super.setEnabled(menuItem.isEnabled());
                 setVisible(menuItem.isVisible());
                 if (menuItem.getIcon() != null) {

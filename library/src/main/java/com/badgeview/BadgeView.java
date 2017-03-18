@@ -41,7 +41,7 @@ public class BadgeView extends TextView {
 
         a.recycle();
 
-        setBackgroundInternal(getBackgroundDrawable());
+        setBackgroundInternal(createBackgroundDrawable());
     }
 
     @Override
@@ -78,7 +78,7 @@ public class BadgeView extends TextView {
     @Override
     public void setText(CharSequence text, BufferType type) {
         super.setText(text, type);
-        setBackgroundInternal(getBackgroundDrawable());
+        setBackgroundInternal(createBackgroundDrawable());
     }
 
     @Override
@@ -163,7 +163,7 @@ public class BadgeView extends TextView {
     public void setBackgroundColor(@ColorInt int color) {
         if (mBackgroundColor != color) {
             mBackgroundColor = color;
-            setBackgroundInternal(getBackgroundDrawable());
+            setBackgroundInternal(createBackgroundDrawable());
         }
     }
 
@@ -180,7 +180,7 @@ public class BadgeView extends TextView {
         super.setBackgroundDrawable(background);
     }
 
-    protected Drawable getBackgroundDrawable() {
+    protected Drawable createBackgroundDrawable() {
         if (getText().length() > 2) {
             int padding = (int) Util.dpToPx(4);
             super.setPadding(padding, padding / 3, padding, padding / 3);
