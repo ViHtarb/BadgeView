@@ -8,17 +8,21 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.support.annotation.ColorInt;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.widget.TextView;
 
 /**
  * Implementation of BadgeView
  */
-public class BadgeView extends TextView {
+public class BadgeView extends AppCompatTextView {
+    private static final int DEFAULT_PADDING = 16;
+    private static final int DEFAULT_DURATION = 200;
+
     private boolean isShowing = true;
 
     private int mBackgroundColor;
+    private int mPadding;
     private int mDuration;
 
     public BadgeView(Context context) {
@@ -37,6 +41,7 @@ public class BadgeView extends TextView {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BadgeView, defStyleAttr, 0);
 
         mBackgroundColor = a.getColor(R.styleable.BadgeView_backgroundColor, Color.RED);
+        mPadding = a.getDimensionPixelSize(R.styleable.BadgeView_android_padding, 16);
         mDuration = a.getInt(R.styleable.BadgeView_android_duration, 200);
 
         a.recycle();
@@ -167,6 +172,18 @@ public class BadgeView extends TextView {
         }
     }
 
+    public int getPadding() {
+        return mPadding;
+    }
+
+    public void setPadding(int padding) {
+        if (mPadding != padding) {
+            mPadding = padding;
+
+            super.setPadding(mPadding, mPadding / 3, mPadding, mPadding / 3);
+        }
+    }
+
     public int getDuration() {
         return mDuration;
     }
@@ -182,8 +199,7 @@ public class BadgeView extends TextView {
 
     protected Drawable createBackgroundDrawable() {
         if (getText().length() > 2) {
-            int padding = (int) Util.dpToPx(4);
-            super.setPadding(padding, padding / 3, padding, padding / 3);
+            super.setPadding(mPadding, mPadding / 3, mPadding, mPadding / 3);
 
             GradientDrawable drawable = new GradientDrawable();
             drawable.setColor(mBackgroundColor);
