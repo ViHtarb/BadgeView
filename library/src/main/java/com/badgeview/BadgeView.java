@@ -76,8 +76,8 @@ public class BadgeView extends AppCompatTextView {
     /**
      * Sets the background color
      *
-     * @attr ref R.styleable#BadgeView_backgroundColor
      * @param color the color of the background
+     * @attr ref R.styleable#BadgeView_backgroundColor
      */
     @Override
     public void setBackgroundColor(@ColorInt int color) {
@@ -142,6 +142,7 @@ public class BadgeView extends AppCompatTextView {
 
     /**
      * Toggle badge showing
+     *
      * @param animate {@code true} to animated showing, {@code false} otherwise
      */
     public void toggle(boolean animate) {
@@ -161,6 +162,7 @@ public class BadgeView extends AppCompatTextView {
 
     /**
      * Show badge
+     *
      * @param animate {@code true} to animated showing, {@code false} otherwise
      */
     public void show(boolean animate) {
@@ -169,6 +171,7 @@ public class BadgeView extends AppCompatTextView {
 
     /**
      * Show badge
+     *
      * @param resId the resource identifier of the string resource to be displayed
      */
     public void show(@StringRes int resId) {
@@ -177,7 +180,8 @@ public class BadgeView extends AppCompatTextView {
 
     /**
      * Show badge
-     * @param resId the resource identifier of the string resource to be displayed
+     *
+     * @param resId   the resource identifier of the string resource to be displayed
      * @param animate {@code true} to animated showing, {@code false} otherwise
      */
     public void show(@StringRes int resId, boolean animate) {
@@ -186,6 +190,7 @@ public class BadgeView extends AppCompatTextView {
 
     /**
      * Show badge
+     *
      * @param text text to be displayed
      */
     public void show(CharSequence text) {
@@ -194,7 +199,8 @@ public class BadgeView extends AppCompatTextView {
 
     /**
      * Show badge
-     * @param text text to be displayed
+     *
+     * @param text    text to be displayed
      * @param animate {@code true} to animated showing, {@code false} otherwise
      */
     public void show(CharSequence text, boolean animate) {
@@ -224,6 +230,7 @@ public class BadgeView extends AppCompatTextView {
 
     /**
      * Hide badge
+     *
      * @param animate {@code true} to animated hiding, {@code false} otherwise
      */
     public void hide(boolean animate) {
@@ -258,8 +265,8 @@ public class BadgeView extends AppCompatTextView {
     /**
      * Sets badge padding
      *
-     * @attr ref R.styleable#BadgeView_android_padding
      * @param padding the padding in pixels
+     * @attr ref R.styleable#BadgeView_android_padding
      */
     public void setPadding(int padding) {
         if (mPadding != padding) {
@@ -279,8 +286,8 @@ public class BadgeView extends AppCompatTextView {
     /**
      * Sets animation duration
      *
-     * @attr ref R.styleable#BadgeView_android_duration
      * @param duration the animation duration
+     * @attr ref R.styleable#BadgeView_android_duration
      */
     public void setDuration(long duration) {
         mDuration = duration;
@@ -289,10 +296,9 @@ public class BadgeView extends AppCompatTextView {
     /**
      * Wrapper method of {@link super#setBackgroundDrawable(Drawable)}
      *
-     * @see super#setBackgroundDrawable(Drawable)
-     *
      * @param background the drawable to use as the background, or null to remove the
-     *        background
+     *                   background
+     * @see super#setBackgroundDrawable(Drawable)
      */
     protected final void setBackgroundInternal(Drawable background) {
         // noinspection deprecation
@@ -301,6 +307,7 @@ public class BadgeView extends AppCompatTextView {
 
     /**
      * Creates background drawable
+     *
      * @return the drawable for used as background
      */
     protected Drawable createBackgroundDrawable() {

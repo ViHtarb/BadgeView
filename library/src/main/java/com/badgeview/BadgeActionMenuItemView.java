@@ -28,8 +28,8 @@ import android.widget.TextView;
 
 /**
  * Created by Viнt@rь on 14.09.2016
- *
- * Badge action view implementation
+ * <p>
+ * Badged action menu item view implementation
  */
 public class BadgeActionMenuItemView extends FrameLayout {
     private static final int MAX_ICON_SIZE = 32; // dp
@@ -93,7 +93,7 @@ public class BadgeActionMenuItemView extends FrameLayout {
     }
 
     /**
-     * Only for internal usage.
+     * Only for internal usage
      */
     @Override
     public void setVisibility(int visibility) {
@@ -195,81 +195,183 @@ public class BadgeActionMenuItemView extends FrameLayout {
         }
     }
 
+    /**
+     * @return {@code true} if the badge is showed, {@code false} otherwise
+     */
     public boolean isBadgeShowing() {
         return mBadgeView.isShowing();
     }
 
+    /**
+     * Toggle badge showing
+     */
     public void toggleBadge() {
         mBadgeView.toggle();
     }
 
+    /**
+     * Toggle badge showing
+     *
+     * @param animate {@code true} to animated badge showing, {@code false} otherwise
+     */
+    public void toggleBadge(boolean animate) {
+        mBadgeView.toggle(animate);
+    }
+
+    /**
+     * Show badge
+     */
     public void showBadge() {
         mBadgeView.show();
     }
 
+    /**
+     * Show badge
+     *
+     * @param animate {@code true} to animated badge showing, {@code false} otherwise
+     */
     public void showBadge(boolean animate) {
         mBadgeView.show(animate);
     }
 
+    /**
+     * Show badge
+     *
+     * @param resId the resource identifier of the badge string resource to be displayed
+     */
     public void showBadge(@StringRes int resId) {
         mBadgeView.show(resId);
     }
 
+    /**
+     * Show badge
+     *
+     * @param resId   the resource identifier of the badge string resource to be displayed
+     * @param animate {@code true} to animated badge showing, {@code false} otherwise
+     */
     public void showBadge(@StringRes int resId, boolean animate) {
         mBadgeView.show(resId, animate);
     }
 
+    /**
+     * Show badge
+     *
+     * @param text badge text to be displayed
+     */
     public void showBadge(CharSequence text) {
         mBadgeView.show(text);
     }
 
+    /**
+     * Show badge
+     *
+     * @param text    badge text to be displayed
+     * @param animate {@code true} to animated badge showing, {@code false} otherwise
+     */
     public void showBadge(CharSequence text, boolean animate) {
         mBadgeView.show(text, animate);
     }
 
+    /**
+     * Hide badge
+     */
     public void hideBadge() {
         mBadgeView.hide();
     }
 
+    /**
+     * Hide badge
+     *
+     * @param animate {@code true} to animated badge hiding, {@code false} otherwise
+     */
     public void hideBadge(boolean animate) {
         mBadgeView.hide(animate);
     }
 
+    /**
+     * @return badge background color
+     */
+    public int getBadgeBackgroundColor() {
+        return mBadgeView.getBackgroundColor();
+    }
+
+    /**
+     * Sets the badge background color
+     *
+     * @param color the color of the badge background
+     */
+    public void setBadgeBackgroundColor(@ColorInt int color) {
+        mBadgeView.setBackgroundColor(color);
+    }
+
+    /**
+     * @return the badge gravity in this view
+     */
     public int getBadgeGravity() {
         return mBadgeLayoutParams.gravity;
     }
 
+    /**
+     * Sets badge gravity in this view
+     *
+     * @param gravity badge gravity
+     */
     public void setBadgeGravity(int gravity) {
         mBadgeLayoutParams.gravity = gravity;
         requestLayout();
     }
 
-    public int getBadgeBackgroundColor() {
-        return mBadgeView.getBackgroundColor();
+    /**
+     * @return badge padding in pixels
+     */
+    public int getBadgePadding() {
+        return mBadgeView.getPadding();
     }
 
-    public void setBadgeBackgroundColor(@ColorInt int color) {
-        mBadgeView.setBackgroundColor(color);
+    /**
+     * Sets badge padding
+     *
+     * @param padding the badge padding in pixels
+     */
+    public void setBadgePadding(int padding) {
+        mBadgeView.setPadding(padding);
     }
 
-    public int getBadgeDuration() {
+    /**
+     * @return badge animation duration
+     */
+    public long getBadgeDuration() {
         return mBadgeView.getDuration();
     }
 
+    /**
+     * Sets badge animation duration
+     *
+     * @param duration the badge animation duration
+     */
     public void setBadgeDuration(int duration) {
         mBadgeView.setDuration(duration);
     }
 
+    /**
+     * Return the badge text
+     *
+     * @return the badge text
+     * @see TextView#getText()
+     */
     public CharSequence getBadgeText() {
         return mBadgeView.getText();
     }
 
+    /**
+     * @return the badge view implementation
+     */
     public BadgeView getBadgeView() {
         return mBadgeView;
     }
 
     /**
-     * @return The resource ID value in the {@code context} specified by {@code attr}.
+     * @return the resource ID value in the {@code context} specified by {@code attr}
      */
     private static int getAttr(@NonNull Context context, @AttrRes int attr) {
         TypedValue value = new TypedValue();
@@ -279,7 +381,7 @@ public class BadgeActionMenuItemView extends FrameLayout {
 
     /**
      * Whether action menu items should obey the "withText" showAsAction flag. This may be set to
-     * false for situations where space is extremely limited. -->
+     * false for situations where space is extremely limited
      */
     private boolean shouldAllowTextWithIcon() {
         final Configuration config = getContext().getResources().getConfiguration();

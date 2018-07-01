@@ -153,7 +153,7 @@ public class BadgeActionView extends BadgeActionMenuItemView {
      * @deprecated Use {@link BadgeActionMenuItemView#getBadgeDuration()} instead.
      */
     @Deprecated
-    public int getDuration() {
+    public long getDuration() {
         return super.getBadgeDuration();
     }
 
