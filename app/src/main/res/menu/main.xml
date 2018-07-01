@@ -12,6 +12,6 @@
         android:orderInCategory="99"
         android:icon="@mipmap/ic_launcher"
         android:title="TEST2"
-        app:actionViewClass="com.badgeview.BadgeActionView"
+        app:actionViewClass="com.badgeview.BadgeActionMenuItemView"
         app:showAsAction="always"/>
 </menu>
