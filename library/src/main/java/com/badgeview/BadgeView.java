@@ -17,14 +17,14 @@ import android.view.Gravity;
  * Implementation of BadgeView
  */
 public class BadgeView extends AppCompatTextView {
-    private static final int DEFAULT_PADDING = 16;
+    private static final int DEFAULT_PADDING = 16; // px
     private static final int DEFAULT_DURATION = 200;
 
     private boolean isShowing = true;
 
     private int mBackgroundColor;
     private int mPadding;
-    private int mDuration;
+    private long mDuration;
 
     public BadgeView(Context context) {
         this(context, null);
@@ -42,43 +42,68 @@ public class BadgeView extends AppCompatTextView {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.BadgeView, defStyleAttr, 0);
 
         mBackgroundColor = a.getColor(R.styleable.BadgeView_backgroundColor, Color.RED);
-        mPadding = a.getDimensionPixelSize(R.styleable.BadgeView_android_padding, 16);
-        mDuration = a.getInt(R.styleable.BadgeView_android_duration, 200);
+        mPadding = a.getDimensionPixelSize(R.styleable.BadgeView_android_padding, DEFAULT_PADDING);
+        mDuration = a.getInt(R.styleable.BadgeView_android_duration, DEFAULT_DURATION);
 
         a.recycle();
 
         setBackgroundInternal(createBackgroundDrawable());
     }
 
+    /**
+     * not supported
+     */
     @Override
     public void setPadding(int left, int top, int right, int bottom) {
-        // not supported
     }
 
     @Override
     public void setVisibility(int visibility) {
-        // not supported
+        if (visibility == VISIBLE) {
+            show();
+        } else {
+            hide();
+        }
     }
 
+    /**
+     * not supported
+     */
     @Override
     public void setGravity(int gravity) {
-        // not supported
     }
 
+    /**
+     * Sets the background color
+     *
+     * @attr ref R.styleable#BadgeView_backgroundColor
+     * @param color the color of the background
+     */
+    @Override
+    public void setBackgroundColor(@ColorInt int color) {
+        if (mBackgroundColor != color) {
+            mBackgroundColor = color;
+            setBackgroundInternal(createBackgroundDrawable());
+        }
+    }
+
+    /**
+     * not supported
+     */
     @Override
     public Drawable getBackground() {
-        // not supported
         return null;
     }
 
     @Override
     public void setBackground(Drawable background) {
-        // not supported
     }
 
+    /**
+     * not supported
+     */
     @Override
     public void setBackgroundDrawable(Drawable background) {
-        // not supported
     }
 
     @Override
@@ -87,24 +112,38 @@ public class BadgeView extends AppCompatTextView {
         setBackgroundInternal(createBackgroundDrawable());
     }
 
+    /**
+     * not supported
+     */
     @Override
     public void setSingleLine(boolean singleLine) {
-        // not supported
     }
 
+    /**
+     * not supported
+     */
     @Override
     public void setMaxLines(int maxLines) {
-        // not supported
     }
 
+    /**
+     * @return {@code true} if the badge is showed, {@code false} otherwise
+     */
     public boolean isShowing() {
         return isShowing;
     }
 
+    /**
+     * Toggle badge showing
+     */
     public void toggle() {
         toggle(true);
     }
 
+    /**
+     * Toggle badge showing
+     * @param animate {@code true} to animated showing, {@code false} otherwise
+     */
     public void toggle(boolean animate) {
         if (isShowing) {
             hide(animate);
@@ -113,26 +152,51 @@ public class BadgeView extends AppCompatTextView {
         }
     }
 
+    /**
+     * Show badge
+     */
     public void show() {
         show(true);
     }
 
+    /**
+     * Show badge
+     * @param animate {@code true} to animated showing, {@code false} otherwise
+     */
     public void show(boolean animate) {
         show(null, animate);
     }
 
+    /**
+     * Show badge
+     * @param resId the resource identifier of the string resource to be displayed
+     */
     public void show(@StringRes int resId) {
         show(resId, true);
     }
 
+    /**
+     * Show badge
+     * @param resId the resource identifier of the string resource to be displayed
+     * @param animate {@code true} to animated showing, {@code false} otherwise
+     */
     public void show(@StringRes int resId, boolean animate) {
         show(getResources().getText(resId), animate);
     }
 
+    /**
+     * Show badge
+     * @param text text to be displayed
+     */
     public void show(CharSequence text) {
         show(text, true);
     }
 
+    /**
+     * Show badge
+     * @param text text to be displayed
+     * @param animate {@code true} to animated showing, {@code false} otherwise
+     */
     public void show(CharSequence text, boolean animate) {
         super.setVisibility(VISIBLE);
 
@@ -151,10 +215,17 @@ public class BadgeView extends AppCompatTextView {
         }
     }
 
+    /**
+     * Hide badge
+     */
     public void hide() {
         hide(true);
     }
 
+    /**
+     * Hide badge
+     * @param animate {@code true} to animated hiding, {@code false} otherwise
+     */
     public void hide(boolean animate) {
         isShowing = false;
 
@@ -170,21 +241,26 @@ public class BadgeView extends AppCompatTextView {
         }
     }
 
+    /**
+     * @return background color
+     */
     public int getBackgroundColor() {
         return mBackgroundColor;
     }
 
-    public void setBackgroundColor(@ColorInt int color) {
-        if (mBackgroundColor != color) {
-            mBackgroundColor = color;
-            setBackgroundInternal(createBackgroundDrawable());
-        }
-    }
-
+    /**
+     * @return padding in pixels
+     */
     public int getPadding() {
         return mPadding;
     }
 
+    /**
+     * Sets badge padding
+     *
+     * @attr ref R.styleable#BadgeView_android_padding
+     * @param padding the padding in pixels
+     */
     public void setPadding(int padding) {
         if (mPadding != padding) {
             mPadding = padding;
@@ -193,19 +269,40 @@ public class BadgeView extends AppCompatTextView {
         }
     }
 
-    public int getDuration() {
+    /**
+     * @return animation duration
+     */
+    public long getDuration() {
         return mDuration;
     }
 
-    public void setDuration(int duration) {
+    /**
+     * Sets animation duration
+     *
+     * @attr ref R.styleable#BadgeView_android_duration
+     * @param duration the animation duration
+     */
+    public void setDuration(long duration) {
         mDuration = duration;
     }
 
+    /**
+     * Wrapper method of {@link super#setBackgroundDrawable(Drawable)}
+     *
+     * @see super#setBackgroundDrawable(Drawable)
+     *
+     * @param background the drawable to use as the background, or null to remove the
+     *        background
+     */
     protected final void setBackgroundInternal(Drawable background) {
         // noinspection deprecation
         super.setBackgroundDrawable(background);
     }
 
+    /**
+     * Creates background drawable
+     * @return the drawable for used as background
+     */
     protected Drawable createBackgroundDrawable() {
         if (getText().length() > 2) {
             super.setPadding(mPadding, mPadding / 3, mPadding, mPadding / 3);
