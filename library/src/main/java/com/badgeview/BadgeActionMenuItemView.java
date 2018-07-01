@@ -195,73 +195,73 @@ public class BadgeActionMenuItemView extends FrameLayout {
         }
     }
 
-    public boolean isShowing() {
+    public boolean isBadgeShowing() {
         return mBadgeView.isShowing();
     }
 
-    public void toggle() {
+    public void toggleBadge() {
         mBadgeView.toggle();
     }
 
-    public void show() {
+    public void showBadge() {
         mBadgeView.show();
     }
 
-    public void show(boolean animate) {
+    public void showBadge(boolean animate) {
         mBadgeView.show(animate);
     }
 
-    public void show(String text) {
+    public void showBadge(@StringRes int resId) {
+        mBadgeView.show(resId);
+    }
+
+    public void showBadge(@StringRes int resId, boolean animate) {
+        mBadgeView.show(resId, animate);
+    }
+
+    public void showBadge(CharSequence text) {
         mBadgeView.show(text);
     }
 
-    public void show(String text, boolean animate) {
+    public void showBadge(CharSequence text, boolean animate) {
         mBadgeView.show(text, animate);
     }
 
-    public void hide() {
+    public void hideBadge() {
         mBadgeView.hide();
     }
 
-    public void hide(boolean animate) {
+    public void hideBadge(boolean animate) {
         mBadgeView.hide(animate);
     }
 
-    public int getGravity() {
+    public int getBadgeGravity() {
         return mBadgeLayoutParams.gravity;
     }
 
-    public void setGravity(int gravity) {
+    public void setBadgeGravity(int gravity) {
         mBadgeLayoutParams.gravity = gravity;
         requestLayout();
     }
 
-    public int getBackgroundColor() {
+    public int getBadgeBackgroundColor() {
         return mBadgeView.getBackgroundColor();
     }
 
-    public void setBackgroundColor(@ColorInt int color) {
+    public void setBadgeBackgroundColor(@ColorInt int color) {
         mBadgeView.setBackgroundColor(color);
     }
 
-    public int getDuration() {
+    public int getBadgeDuration() {
         return mBadgeView.getDuration();
     }
 
-    public void setDuration(int duration) {
+    public void setBadgeDuration(int duration) {
         mBadgeView.setDuration(duration);
     }
 
-    public CharSequence getText() {
+    public CharSequence getBadgeText() {
         return mBadgeView.getText();
-    }
-
-    public void setText(@StringRes int resId) {
-        mBadgeView.setText(resId);
-    }
-
-    public void setText(String text) {
-        mBadgeView.setText(text);
     }
 
     public BadgeView getBadgeView() {

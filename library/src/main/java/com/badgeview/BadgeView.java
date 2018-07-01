@@ -8,6 +8,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.support.annotation.ColorInt;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -120,11 +121,19 @@ public class BadgeView extends AppCompatTextView {
         show(null, animate);
     }
 
-    public void show(String text) {
+    public void show(@StringRes int resId) {
+        show(resId, true);
+    }
+
+    public void show(@StringRes int resId, boolean animate) {
+        show(getResources().getText(resId), animate);
+    }
+
+    public void show(CharSequence text) {
         show(text, true);
     }
 
-    public void show(String text, boolean animate) {
+    public void show(CharSequence text, boolean animate) {
         super.setVisibility(VISIBLE);
 
         isShowing = true;
