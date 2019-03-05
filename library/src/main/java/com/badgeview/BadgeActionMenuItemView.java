@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.AttrRes;
 import android.support.annotation.ColorInt;
+import android.support.annotation.Keep;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v4.view.MenuItemCompat;
@@ -31,6 +32,7 @@ import android.widget.TextView;
  * <p>
  * Badged action menu item view implementation
  */
+@Keep
 public class BadgeActionMenuItemView extends FrameLayout {
     private static final int MAX_ICON_SIZE = 32; // dp
 

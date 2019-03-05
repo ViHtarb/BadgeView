@@ -15,17 +15,20 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    testImplementation 'junit:junit:' + rootProject.ext.junitVersion
     implementation 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibraryVersion
     implementation project(':library')
+
+    testImplementation 'junit:junit:' + rootProject.ext.junitVersion
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
