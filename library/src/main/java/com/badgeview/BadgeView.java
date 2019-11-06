@@ -7,11 +7,12 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
-import android.support.annotation.ColorInt;
-import android.support.annotation.StringRes;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.Gravity;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.StringRes;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * Implementation of BadgeView

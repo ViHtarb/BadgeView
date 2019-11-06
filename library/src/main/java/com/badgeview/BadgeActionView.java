@@ -1,13 +1,14 @@
 package com.badgeview;
 
 import android.content.Context;
-import android.support.annotation.ColorInt;
-import android.support.annotation.Keep;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.view.MenuItem;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 /**
  * Created by Viнt@rь on 14.09.2016
