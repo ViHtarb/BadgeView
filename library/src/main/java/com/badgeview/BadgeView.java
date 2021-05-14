@@ -11,12 +11,14 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.Keep;
 import androidx.annotation.StringRes;
 import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * Implementation of BadgeView
  */
+@Keep
 public class BadgeView extends AppCompatTextView {
     private static final int DEFAULT_PADDING = 16; // px
     private static final int DEFAULT_DURATION = 200;
